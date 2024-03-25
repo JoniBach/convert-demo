@@ -1,7 +1,87 @@
 <script lang="ts">
-	import { inchesToMeters } from '@jonibach/convert';
-	$: console.log(inchesToMeters(1));
+	import { onMount } from 'svelte';
+
+	import Collection from '$lib/components/Collection.svelte';
+	import Menu from '$lib/components/Menu.svelte';
+	import BasicConverter from '$lib/components/BasicConverter.svelte';
+	import data from './data';
+
+	let elements = [];
+	let screenSize = 400;
+
+	function handleScroll() {
+		let currentSection = '';
+		elements.forEach((section) => {
+			const sectionTop = section.offsetTop;
+			const sectionHeight = section.clientHeight;
+			if (pageYOffset >= sectionTop - sectionHeight / 3) {
+				currentSection = section.id;
+			}
+		});
+		if (currentSection) {
+			const url = new URL(window.location);
+			url.searchParams.set('top', currentSection);
+			window.history.pushState({}, '', url);
+		}
+	}
+
+	// Check screen width on component mount and on window resize
+	function checkScreenSize() {
+		const innerWidth = window?.innerWidth;
+		if (innerWidth <= 600) {
+			screenSize = 200;
+		} else if (innerWidth <= 900) {
+			screenSize = 400;
+		} else {
+			screenSize = 600;
+		}
+	}
+
+	onMount(() => {
+		checkScreenSize();
+		elements = document.querySelectorAll('.scroll-section');
+		window.addEventListener('resize', checkScreenSize);
+		window.addEventListener('scroll', handleScroll);
+	});
 </script>
 
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<body style="margin: 0;">
+	<div class="page">
+		<Menu {data} />
+		<div class="page-content">
+			<h1 class="page-title">@jonibach/convert demos in svelte</h1>
+
+			{#each data as category}
+				<Collection title={category.title}>
+					{#each category.items as item}
+						<div>
+							<h3>{item.title}</h3>
+							<BasicConverter
+								defaultValue={item.defaultValue}
+								converter={item.converter}
+								from={item.from}
+								to={item.to}
+							/>
+						</div>
+					{/each}
+				</Collection>
+			{/each}
+		</div>
+	</div></body
+>
+
+<style>
+	.page {
+		display: flex;
+	}
+
+	.page-title {
+		margin: 0;
+		padding: 10px;
+		background-color: #aaa;
+	}
+
+	.page-content {
+		flex: 1;
+	}
+</style>
