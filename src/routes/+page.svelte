@@ -59,7 +59,6 @@
 					{#each category.items as item}
 						<div>
 							<h3 id="{item.title}-title">{item.title}</h3>
-							<p class="implamentation">const {item.to} = {item.title}({item.from})</p>
 							<BasicConverter
 								readOnly={item.readOnly}
 								defaultValue={item.defaultValue}
@@ -67,6 +66,7 @@
 								from={item.from}
 								to={item.to}
 							/>
+							<p class="implamentation">const {item.to} = {item.title}({item.from})</p>
 						</div>
 					{/each}
 				</Collection>
