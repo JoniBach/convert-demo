@@ -121,5 +121,6 @@
 	.implamentation {
 		padding: 10px;
 		border: 1px solid #ccc;
+		margin-top: 10px;
 	}
 </style>
