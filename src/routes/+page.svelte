@@ -52,7 +52,7 @@
 	<div class="page">
 		<Menu {data} />
 		<div class="page-content">
-			<h1 class="page-title">@jonibach/convert demos in svelte</h1>
+			<h1 class="page-title">npm i @jonibach/convert</h1>
 
 			{#each data as category}
 				<Collection title={category.title}>

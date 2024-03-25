@@ -166,13 +166,13 @@ export default [
                 converter: litersToGallons,
                 defaultValue: 1,
                 from: 'liters',
-                to: 'gallons (US)'
+                to: 'gallons'
             },
             {
                 title: 'cubicFeetToLiters',
                 converter: cubicFeetToLiters,
                 defaultValue: 1,
-                from: 'cubic feet',
+                from: 'cubicFeet',
                 to: 'liters'
             },
             {
@@ -180,37 +180,37 @@ export default [
                 converter: litersToCubicFeet,
                 defaultValue: 1,
                 from: 'liters',
-                to: 'cubic feet'
+                to: 'cubicFeet'
             },
             {
                 title: 'fahrenheitToKelvin',
                 converter: fahrenheitToKelvin,
                 defaultValue: 32,
                 // Freezing point of water in Fahrenheit
-                from: 'Fahrenheit',
-                to: 'Kelvin'
+                from: 'fahrenheit',
+                to: 'kelvin'
             },
             {
                 title: 'kelvinToFahrenheit',
                 converter: kelvinToFahrenheit,
                 defaultValue: 273.15,
                 // Freezing point of water in Kelvin
-                from: 'Kelvin',
-                to: 'Fahrenheit'
+                from: 'kelvin',
+                to: 'fahrenheit'
             },
             {
                 title: 'celsiusToKelvin',
                 converter: celsiusToKelvin,
                 defaultValue: 0, // Freezing point of water in Celsius
-                from: 'Celsius',
-                to: 'Kelvin'
+                from: 'celsius',
+                to: 'kelvin'
             },
             {
                 title: 'kelvinToCelsius',
                 converter: kelvinToCelsius,
                 defaultValue: 273.15, // Freezing point of water in Kelvin
-                from: 'Kelvin',
-                to: 'Celsius'
+                from: 'kelvin',
+                to: 'celsius'
             },
             {
                 title: 'caloriesToJoules',
@@ -230,7 +230,7 @@ export default [
                 title: 'btusToJoules',
                 converter: btusToJoules,
                 defaultValue: 1,
-                from: 'British Thermal Units (BTUs)',
+                from: 'btu',
                 to: 'joules'
             },
             {
@@ -238,13 +238,13 @@ export default [
                 converter: joulesToBtus,
                 defaultValue: 1,
                 from: 'joules',
-                to: 'British Thermal Units (BTUs)'
+                to: 'btu'
             },
             {
                 title: 'psiToPascals',
                 converter: psiToPascals,
                 defaultValue: 1,
-                from: 'pounds per square inch (psi)',
+                from: 'psi',
                 to: 'pascals'
             },
             {
@@ -252,7 +252,7 @@ export default [
                 converter: pascalsToPsi,
                 defaultValue: 1,
                 from: 'pascals',
-                to: 'pounds per square inch (psi)'
+                to: 'psi'
             },
             {
                 title: 'atmospheresToPascals',
@@ -293,14 +293,14 @@ export default [
                 title: 'urlToEncode',
                 converter: urlToEncode,
                 defaultValue: 'https://example.com/?search=query',
-                from: 'URL string',
-                to: 'Encoded URL string'
+                from: 'urlString',
+                to: 'encodedUrltring'
             },
             {
                 title: 'urlToDecode',
                 converter: urlToDecode,
                 defaultValue: 'https%3A%2F%2Fexample.com%2F%3Fsearch%3Dquery',
-                from: 'Encoded URL string',
+                from: 'encodedUrltring',
                 to: 'URL string'
             },
 
@@ -337,13 +337,13 @@ export default [
                 converter: webStringToBase64,
                 defaultValue: 'example string',
                 from: 'string',
-                to: 'Base64 (Browser)'
+                to: 'base64'
             },
             {
                 title: 'webBase64ToString',
                 converter: webBase64ToString,
                 defaultValue: 'ZXhhbXBsZSBzdHJpbmc=',
-                from: 'Base64 (Browser)',
+                from: 'base64',
                 to: 'string'
             },
         ]
@@ -385,57 +385,57 @@ export default [
                 title: 'binaryToDecimal',
                 converter: binaryToDecimal,
                 defaultValue: '1010', // Example binary string
-                from: 'binary string',
-                to: 'decimal number'
+                from: 'binaryString',
+                to: 'decimalNumber'
             },
             {
                 title: 'decimalToBinary',
                 converter: decimalToBinary,
                 defaultValue: 10, // Example decimal number
-                from: 'decimal number',
-                to: 'binary string'
+                from: 'decimalNumber',
+                to: 'binaryString'
             },
             {
                 title: 'hexadecimalToDecimal',
                 converter: hexadecimalToDecimal,
                 defaultValue: 'A', // Example hexadecimal string
-                from: 'hexadecimal string',
-                to: 'decimal number'
+                from: 'hexadecimalString',
+                to: 'decimalNumber'
             },
             {
                 title: 'decimalToHexadecimal',
                 converter: decimalToHexadecimal,
                 defaultValue: 10, // Example decimal number
-                from: 'decimal number',
-                to: 'hexadecimal string'
+                from: 'decimalNumber',
+                to: 'hexadecimalString'
             },
             {
                 title: 'binaryToHexadecimal',
                 converter: binaryToHexadecimal,
                 defaultValue: '1010', // Example binary string
-                from: 'binary string',
-                to: 'hexadecimal string'
+                from: 'binaryString',
+                to: 'hexadecimalString'
             },
             {
                 title: 'hexadecimalToBinary',
                 converter: hexadecimalToBinary,
                 defaultValue: 'A', // Example hexadecimal string
-                from: 'hexadecimal string',
-                to: 'binary string'
+                from: 'hexadecimalString',
+                to: 'binaryString'
             },
             {
                 title: 'decimalToOctal',
                 converter: decimalToOctal,
                 defaultValue: 10, // Example decimal number
                 from: 'decimal number',
-                to: 'octal string'
+                to: 'octalString'
             },
             {
                 title: 'octalToDecimal',
                 converter: octalToDecimal,
-                defaultValue: '12', // Example octal string
-                from: 'octal string',
-                to: 'decimal number'
+                defaultValue: '12', // Example octalString
+                from: 'octalString',
+                to: 'decimalNumber'
             }
         ]
     },
@@ -447,48 +447,48 @@ export default [
                 title: 'dateToTimestamp',
                 converter: dateToTimestamp,
                 defaultValue: new Date(), // Current date and time
-                from: 'Date object',
-                to: 'UNIX timestamp'
+                from: 'dateObject',
+                to: 'unixTimestamp'
             },
             {
                 readOnly: true,
                 title: 'timestampToDate',
                 converter: timestampToDate,
-                defaultValue: Date.now(), // Current UNIX timestamp
-                from: 'UNIX timestamp',
-                to: 'Date object'
+                defaultValue: Date.now(), // Current unixTimestamp
+                from: 'unixTimestamp',
+                to: 'dateObject'
             },
             {
                 readOnly: true,
                 title: 'dateToISOString',
                 converter: dateToISOString,
                 defaultValue: new Date(), // Current date and time
-                from: 'Date object',
-                to: 'ISO 8601 string'
+                from: 'dateObject',
+                to: 'iso8601string'
             },
             {
                 readOnly: true,
                 title: 'isoStringToDate',
                 converter: isoStringToDate,
                 defaultValue: new Date().toISOString(), // Current date and time in ISO 8601 format
-                from: 'ISO 8601 string',
-                to: 'Date object'
+                from: 'iso8601string',
+                to: 'dateObject'
             },
             {
                 readOnly: true,
                 title: 'timestampToISOString',
                 converter: timestampToISOString,
-                defaultValue: Date.now(), // Current UNIX timestamp
-                from: 'UNIX timestamp',
-                to: 'ISO 8601 string'
+                defaultValue: Date.now(), // Current unixTimestamp
+                from: 'unixTimestamp',
+                to: 'iso8601string'
             },
             {
                 readOnly: true,
                 title: 'isoStringToTimestamp',
                 converter: isoStringToTimestamp,
                 defaultValue: new Date().toISOString(), // Current date and time in ISO 8601 format
-                from: 'ISO 8601 string',
-                to: 'UNIX timestamp'
+                from: 'iso8601string',
+                to: 'unixTimestamp'
             },
             {
                 readOnly: true,
@@ -496,8 +496,8 @@ export default [
                 converter: dateToLocalString,
                 defaultValue: new Date(), // Current date and time
                 additionalParams: 'locale: string, options?: Intl.DateTimeFormatOptions',
-                from: 'Date object',
-                to: 'localized string representation'
+                from: 'dateObject',
+                to: 'localizedStringRepresentation'
             },
             {
                 readOnly: true,
@@ -505,8 +505,8 @@ export default [
                 converter: dateToDayOfWeek,
                 defaultValue: new Date(), // Current date and time
                 additionalParams: 'locale: string = "en-US"',
-                from: 'Date object',
-                to: 'day of the week'
+                from: 'dateObject',
+                to: 'dayOfTheWeek'
             }
         ]
     },
@@ -565,7 +565,7 @@ export default [
                 converter: rgbaToString,
                 defaultValue: { r: 255, g: 255, b: 255, a: 1 }, // White color with full opacity
                 from: 'RGBA',
-                to: 'CSS string'
+                to: 'CSSstring'
             },
             {
                 readOnly: true,
@@ -573,7 +573,7 @@ export default [
                 converter: hslaToString,
                 defaultValue: { h: 0, s: 0, l: 100, a: 1 }, // White color with full opacity
                 from: 'HSLA',
-                to: 'CSS string'
+                to: 'CSSstring'
             },
             {
                 readOnly: true,
@@ -581,7 +581,7 @@ export default [
                 converter: complementaryHsl,
                 defaultValue: { h: 0, s: 100, l: 50 }, // Red color
                 from: 'HSL',
-                to: 'Complementary HSL'
+                to: 'ComplementaryHSL'
             }
         ]
     },
@@ -595,14 +595,14 @@ export default [
                 converter: objectToArray,
                 defaultValue: { key1: 'value1', key2: 'value2' },
                 from: 'object',
-                to: 'array of [key, value] pairs'
+                to: 'arrayOfKeyValuePairs'
             },
             {
                 readOnly: true,
                 title: 'arrayToObject',
                 converter: arrayToObject,
                 defaultValue: [['key1', 'value1'], ['key2', 'value2']],
-                from: 'array of [key, value] pairs',
+                from: 'arrayOfKeyValuePairs',
                 to: 'object'
             },
             {
@@ -642,8 +642,8 @@ export default [
                 title: 'arrayToFlatArray',
                 converter: arrayToFlatArray,
                 defaultValue: [1, [2, [3, [4, 5]]]],
-                from: 'nested array',
-                to: 'flattened array'
+                from: 'nestedArray',
+                to: 'flattenedArray'
             },
             {
                 readOnly: true,
@@ -651,8 +651,8 @@ export default [
                 converter: arrayToGroup,
                 defaultValue: [{ category: 'fruit', name: 'apple' }, { category: 'fruit', name: 'banana' }, { category: 'vegetable', name: 'carrot' }],
                 additionalParams: 'key: string',
-                from: 'array of objects',
-                to: 'object grouped by key'
+                from: 'arrayOfObjects',
+                to: 'objectGroupedByKey'
             }
         ]
     },
@@ -664,7 +664,7 @@ export default [
                 title: 'jsonStringToObject',
                 converter: jsonStringToObject,
                 defaultValue: '{"name": "John", "age": 30}',
-                from: 'JSON string',
+                from: 'jsonString',
                 to: 'object'
             },
             {
@@ -673,39 +673,39 @@ export default [
                 converter: objectToJsonString,
                 defaultValue: { name: "John", age: 30 },
                 from: 'object',
-                to: 'JSON string'
+                to: 'jsonString'
             },
             {
                 readOnly: true,
                 title: 'yamlToJson',
                 converter: yamlToJson,
                 defaultValue: 'name: John\nage: 30',
-                from: 'YAML string',
-                to: 'JSON object'
+                from: 'yamlString',
+                to: 'jsonObject'
             },
             {
                 readOnly: true,
                 title: 'jsonToYaml',
                 converter: jsonToYaml,
                 defaultValue: { name: "John", age: 30 },
-                from: 'JSON object',
-                to: 'YAML string'
+                from: 'jsonObject',
+                to: 'yamlString'
             },
             {
                 readOnly: true,
                 title: 'csvToJson',
                 converter: csvToJson,
                 defaultValue: 'name,age\nJohn,30',
-                from: 'CSV string',
-                to: 'JSON object'
+                from: 'csvString',
+                to: 'jsonObject'
             },
             {
                 readOnly: true,
                 title: 'jsonToCsv',
                 converter: jsonToCsv,
                 defaultValue: [{ name: "John", age: 30 }],
-                from: 'JSON object',
-                to: 'CSV string'
+                from: 'jsonObject',
+                to: 'csvString'
             },
             {
                 readOnly: true,
@@ -713,7 +713,7 @@ export default [
                 converter: xmlToJson,
                 defaultValue: '<person><name>John</name><age>30</age></person>',
                 from: 'XML string',
-                to: 'JSON object',
+                to: 'jsonObject',
                 isAsync: true // Indicate this operation is asynchronous
             },
             {
@@ -721,8 +721,8 @@ export default [
                 title: 'jsonToXml',
                 converter: jsonToXml,
                 defaultValue: { person: { name: "John", age: 30 } },
-                from: 'JSON object',
-                to: 'XML string'
+                from: 'jsonObject',
+                to: 'xmlString'
             },
             {
                 readOnly: true,
@@ -739,7 +739,7 @@ export default [
                 converter: compressString,
                 defaultValue: 'Hello World',
                 from: 'string',
-                to: 'Uint8Array'
+                to: 'uint8Array'
             },
             {
                 readOnly: true,
