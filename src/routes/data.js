@@ -1,5 +1,7 @@
 import {
     atmospheresToPascals,
+    binaryToDecimal,
+    binaryToHexadecimal,
     binaryToString,
     btusToJoules,
     caloriesToJoules,
@@ -8,12 +10,17 @@ import {
     dateToISOString,
     dateToLocalString,
     dateToTimestamp,
+    decimalToBinary,
+    decimalToHexadecimal,
+    decimalToOctal,
     fahrenheitToKelvin,
     feetToMeters,
     gallonsToLiters,
     hexToHsl,
     hexToRgb,
     hexToString,
+    hexadecimalToBinary,
+    hexadecimalToDecimal,
     horsepowerToWatts,
     hslToHex,
     hslToRgb,
@@ -33,6 +40,7 @@ import {
     metersToInches,
     metersToMiles,
     milesToMeters,
+    octalToDecimal,
     ouncesToKilograms,
     pascalsToAtmospheres,
     pascalsToPsi,
@@ -354,6 +362,67 @@ export default [
 
     },
     {
+        title: 'Numeric',
+        items: [
+            {
+                title: 'binaryToDecimal',
+                converter: binaryToDecimal,
+                defaultValue: '1010', // Example binary string
+                from: 'binary string',
+                to: 'decimal number'
+            },
+            {
+                title: 'decimalToBinary',
+                converter: decimalToBinary,
+                defaultValue: 10, // Example decimal number
+                from: 'decimal number',
+                to: 'binary string'
+            },
+            {
+                title: 'hexadecimalToDecimal',
+                converter: hexadecimalToDecimal,
+                defaultValue: 'A', // Example hexadecimal string
+                from: 'hexadecimal string',
+                to: 'decimal number'
+            },
+            {
+                title: 'decimalToHexadecimal',
+                converter: decimalToHexadecimal,
+                defaultValue: 10, // Example decimal number
+                from: 'decimal number',
+                to: 'hexadecimal string'
+            },
+            {
+                title: 'binaryToHexadecimal',
+                converter: binaryToHexadecimal,
+                defaultValue: '1010', // Example binary string
+                from: 'binary string',
+                to: 'hexadecimal string'
+            },
+            {
+                title: 'hexadecimalToBinary',
+                converter: hexadecimalToBinary,
+                defaultValue: 'A', // Example hexadecimal string
+                from: 'hexadecimal string',
+                to: 'binary string'
+            },
+            {
+                title: 'decimalToOctal',
+                converter: decimalToOctal,
+                defaultValue: 10, // Example decimal number
+                from: 'decimal number',
+                to: 'octal string'
+            },
+            {
+                title: 'octalToDecimal',
+                converter: octalToDecimal,
+                defaultValue: '12', // Example octal string
+                from: 'octal string',
+                to: 'decimal number'
+            }
+        ]
+    },
+    {
         title: 'Date',
         items: [
             {
@@ -498,6 +567,8 @@ export default [
                 to: 'Complementary HSL'
             }
         ]
-    }
+    },
+
+
 
 ];
