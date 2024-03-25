@@ -9,7 +9,7 @@ import {
     binaryToString,
     btusToJoules,
     caloriesToJoules,
-    celsiusToKelvin, complementaryHsl, cubicFeetToLiters,
+    celsiusToKelvin, complementaryHsl, compressString, csvToJson, cubicFeetToLiters,
     dateToDayOfWeek,
     dateToISOString,
     dateToLocalString,
@@ -17,6 +17,7 @@ import {
     decimalToBinary,
     decimalToHexadecimal,
     decimalToOctal,
+    decompressToString,
     fahrenheitToKelvin,
     feetToMeters,
     gallonsToLiters,
@@ -34,6 +35,10 @@ import {
     isoStringToTimestamp,
     joulesToBtus,
     joulesToCalories,
+    jsonStringToObject,
+    jsonToCsv,
+    jsonToXml,
+    jsonToYaml,
     kelvinToCelsius,
     kelvinToFahrenheit,
     kilogramsToOunces,
@@ -41,11 +46,13 @@ import {
     litersToCubicFeet,
     litersToGallons,
     mapToObject,
+    markdownToHtml,
     metersToFeet,
     metersToInches,
     metersToMiles,
     milesToMeters,
     objectToArray,
+    objectToJsonString,
     objectToMap,
     octalToDecimal,
     ouncesToKilograms,
@@ -69,6 +76,8 @@ import {
     // stringToArrayBuffer,
     webBase64ToString,
     webStringToBase64,
+    xmlToJson,
+    yamlToJson,
     // arrayBufferToString,
 } from '@jonibach/convert';
 export default [
@@ -647,6 +656,101 @@ export default [
             }
         ]
     },
+    {
+        title: 'Format Conversions & Compression',
+        items: [
+            {
+                readOnly: true,
+                title: 'jsonStringToObject',
+                converter: jsonStringToObject,
+                defaultValue: '{"name": "John", "age": 30}',
+                from: 'JSON string',
+                to: 'object'
+            },
+            {
+                readOnly: true,
+                title: 'objectToJsonString',
+                converter: objectToJsonString,
+                defaultValue: { name: "John", age: 30 },
+                from: 'object',
+                to: 'JSON string'
+            },
+            {
+                readOnly: true,
+                title: 'yamlToJson',
+                converter: yamlToJson,
+                defaultValue: 'name: John\nage: 30',
+                from: 'YAML string',
+                to: 'JSON object'
+            },
+            {
+                readOnly: true,
+                title: 'jsonToYaml',
+                converter: jsonToYaml,
+                defaultValue: { name: "John", age: 30 },
+                from: 'JSON object',
+                to: 'YAML string'
+            },
+            {
+                readOnly: true,
+                title: 'csvToJson',
+                converter: csvToJson,
+                defaultValue: 'name,age\nJohn,30',
+                from: 'CSV string',
+                to: 'JSON object'
+            },
+            {
+                readOnly: true,
+                title: 'jsonToCsv',
+                converter: jsonToCsv,
+                defaultValue: [{ name: "John", age: 30 }],
+                from: 'JSON object',
+                to: 'CSV string'
+            },
+            {
+                readOnly: true,
+                title: 'xmlToJson',
+                converter: xmlToJson,
+                defaultValue: '<person><name>John</name><age>30</age></person>',
+                from: 'XML string',
+                to: 'JSON object',
+                isAsync: true // Indicate this operation is asynchronous
+            },
+            {
+                readOnly: true,
+                title: 'jsonToXml',
+                converter: jsonToXml,
+                defaultValue: { person: { name: "John", age: 30 } },
+                from: 'JSON object',
+                to: 'XML string'
+            },
+            {
+                readOnly: true,
+                title: 'markdownToHtml',
+                converter: markdownToHtml,
+                defaultValue: '# Hello World',
+                from: 'Markdown text',
+                to: 'HTML',
+                isAsync: true // Indicate this operation is asynchronous
+            },
+            {
+                readOnly: true,
+                title: 'compressString',
+                converter: compressString,
+                defaultValue: 'Hello World',
+                from: 'string',
+                to: 'Uint8Array'
+            },
+            {
+                readOnly: true,
+                title: 'decompressToString',
+                converter: decompressToString,
+                defaultValue: new Uint8Array(), // Placeholder for demonstration
+                from: 'Uint8Array',
+                to: 'string'
+            }
+        ]
+    }
 
 
 ];

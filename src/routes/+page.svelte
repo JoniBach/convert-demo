@@ -58,7 +58,8 @@
 				<Collection title={category.title}>
 					{#each category.items as item}
 						<div>
-							<h3>{item.title}</h3>
+							<h3 id="{item.title}-title">{item.title}</h3>
+							<p class="implamentation">const {item.to} = {item.title}({item.from})</p>
 							<BasicConverter
 								readOnly={item.readOnly}
 								defaultValue={item.defaultValue}
@@ -75,6 +76,10 @@
 >
 
 <style>
+	.implamentation {
+		padding: 10px;
+		border: 1px solid #ccc;
+	}
 	.page {
 		display: flex;
 	}

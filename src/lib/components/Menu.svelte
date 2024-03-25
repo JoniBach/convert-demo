@@ -31,7 +31,7 @@
 				{category.title}
 			</div>
 			{#each category.items as graph}
-				<div class="item" on:click={() => navigateToElement(graph.key)}>
+				<div class="item" on:click={() => navigateToElement(graph.title)}>
 					{graph.title}
 				</div>
 			{/each}

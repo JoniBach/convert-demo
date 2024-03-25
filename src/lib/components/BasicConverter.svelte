@@ -49,7 +49,6 @@
 		{to}
 	</div>
 {:else}
-	{typeOfDefaultValue}
 	<div>
 		<input bind:value />
 		{from} = {convertedValue}
