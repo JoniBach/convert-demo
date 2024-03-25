@@ -7,6 +7,7 @@
 	export let from: string;
 	export let to: string;
 	export let readOnly: boolean;
+	export let title: string;
 
 	let loading = true;
 
@@ -63,6 +64,11 @@
 		</div>
 		<p class="from">{displayConvertedValue}</p>
 	</div>
+	<div class="implamentation">
+		<p>const {from} = {displayValue}</p>
+		<p>const {to} = {title}({from})</p>
+		<p>console.log({to}) // {displayConvertedValue}</p>
+	</div>
 {:else}
 	<div class="display">
 		<input class="from" bind:value />
@@ -83,6 +89,11 @@
 			</svg>
 		</div>
 		<div class="to">{displayConvertedValue}</div>
+	</div>
+	<div class="implamentation">
+		<p>const {from} = {displayValue}</p>
+		<p>const {to} = {title}({from})</p>
+		<p>console.log({to}) // {displayConvertedValue}</p>
 	</div>
 {/if}
 
@@ -106,5 +117,9 @@
 
 	.to {
 		padding: 10px;
+	}
+	.implamentation {
+		padding: 10px;
+		border: 1px solid #ccc;
 	}
 </style>

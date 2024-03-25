@@ -69,8 +69,8 @@
 								converter={item.converter}
 								from={item.from}
 								to={item.to}
+								title={item.title}
 							/>
-							<p class="implamentation">const {item.to} = {item.title}({item.from})</p>
 						</div>
 					{/each}
 				</Collection>
@@ -80,10 +80,6 @@
 >
 
 <style>
-	.implamentation {
-		padding: 10px;
-		border: 1px solid #ccc;
-	}
 	.page {
 		display: flex;
 	}
