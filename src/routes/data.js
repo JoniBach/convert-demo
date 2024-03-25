@@ -3,13 +3,24 @@ import {
     binaryToString,
     btusToJoules,
     caloriesToJoules,
-    celsiusToKelvin, cubicFeetToLiters,
+    celsiusToKelvin, complementaryHsl, cubicFeetToLiters,
+    dateToDayOfWeek,
+    dateToISOString,
+    dateToLocalString,
+    dateToTimestamp,
     fahrenheitToKelvin,
     feetToMeters,
     gallonsToLiters,
+    hexToHsl,
+    hexToRgb,
     hexToString,
     horsepowerToWatts,
+    hslToHex,
+    hslToRgb,
+    hslaToString,
     inchesToMeters,
+    isoStringToDate,
+    isoStringToTimestamp,
     joulesToBtus,
     joulesToCalories,
     kelvinToCelsius,
@@ -27,8 +38,13 @@ import {
     pascalsToPsi,
     poundsToKilograms,
     psiToPascals,
+    rgbToHex,
+    rgbToHsl,
+    rgbaToString,
     stringToBinary,
     stringToHex,
+    timestampToDate,
+    timestampToISOString,
     urlToDecode,
     urlToEncode,
     wattsToHorsepower,
@@ -306,6 +322,7 @@ export default [
                 to: 'string'
             },
         ]
+
         // {
         //     title: 'nodeStringToBase64',
         //     converter: nodeStringToBase64,
@@ -335,5 +352,152 @@ export default [
         //     to: 'string'
         // },
 
+    },
+    {
+        title: 'Date',
+        items: [
+            {
+                readOnly: true,
+                title: 'dateToTimestamp',
+                converter: dateToTimestamp,
+                defaultValue: new Date(), // Current date and time
+                from: 'Date object',
+                to: 'UNIX timestamp'
+            },
+            {
+                readOnly: true,
+                title: 'timestampToDate',
+                converter: timestampToDate,
+                defaultValue: Date.now(), // Current UNIX timestamp
+                from: 'UNIX timestamp',
+                to: 'Date object'
+            },
+            {
+                readOnly: true,
+                title: 'dateToISOString',
+                converter: dateToISOString,
+                defaultValue: new Date(), // Current date and time
+                from: 'Date object',
+                to: 'ISO 8601 string'
+            },
+            {
+                readOnly: true,
+                title: 'isoStringToDate',
+                converter: isoStringToDate,
+                defaultValue: new Date().toISOString(), // Current date and time in ISO 8601 format
+                from: 'ISO 8601 string',
+                to: 'Date object'
+            },
+            {
+                readOnly: true,
+                title: 'timestampToISOString',
+                converter: timestampToISOString,
+                defaultValue: Date.now(), // Current UNIX timestamp
+                from: 'UNIX timestamp',
+                to: 'ISO 8601 string'
+            },
+            {
+                readOnly: true,
+                title: 'isoStringToTimestamp',
+                converter: isoStringToTimestamp,
+                defaultValue: new Date().toISOString(), // Current date and time in ISO 8601 format
+                from: 'ISO 8601 string',
+                to: 'UNIX timestamp'
+            },
+            {
+                readOnly: true,
+                title: 'dateToLocalString',
+                converter: dateToLocalString,
+                defaultValue: new Date(), // Current date and time
+                additionalParams: 'locale: string, options?: Intl.DateTimeFormatOptions',
+                from: 'Date object',
+                to: 'localized string representation'
+            },
+            {
+                readOnly: true,
+                title: 'dateToDayOfWeek',
+                converter: dateToDayOfWeek,
+                defaultValue: new Date(), // Current date and time
+                additionalParams: 'locale: string = "en-US"',
+                from: 'Date object',
+                to: 'day of the week'
+            }
+        ]
+    },
+    {
+        title: 'Color',
+        items: [
+            // {
+            //     title: 'rgbToHex',
+            //     converter: rgbToHex,
+            //     defaultValue: { r: 255, g: 255, b: 255 }, // White color
+            //     from: 'RGB',
+            //     to: 'Hex'
+            // },
+            // {
+            //     title: 'hexToRgb',
+            //     converter: hexToRgb,
+            //     defaultValue: '#ffffff', // White color
+            //     from: 'Hex',
+            //     to: 'RGB'
+            // },
+            {
+                readOnly: true,
+                title: 'rgbToHsl',
+                converter: rgbToHsl,
+                defaultValue: { r: 255, g: 255, b: 255 }, // White color
+                from: 'RGB',
+                to: 'HSL'
+            },
+            {
+                readOnly: true,
+                title: 'hslToRgb',
+                converter: hslToRgb,
+                defaultValue: { h: 0, s: 0, l: 100 }, // White color
+                from: 'HSL',
+                to: 'RGB'
+            },
+            {
+                readOnly: true,
+                title: 'hexToHsl',
+                converter: hexToHsl,
+                defaultValue: '#ffffff', // White color
+                from: 'Hex',
+                to: 'HSL'
+            },
+            {
+                readOnly: true,
+                title: 'hslToHex',
+                converter: hslToHex,
+                defaultValue: { h: 0, s: 0, l: 100 }, // White color
+                from: 'HSL',
+                to: 'Hex'
+            },
+            {
+                readOnly: true,
+                title: 'rgbaToString',
+                converter: rgbaToString,
+                defaultValue: { r: 255, g: 255, b: 255, a: 1 }, // White color with full opacity
+                from: 'RGBA',
+                to: 'CSS string'
+            },
+            {
+                readOnly: true,
+                title: 'hslaToString',
+                converter: hslaToString,
+                defaultValue: { h: 0, s: 0, l: 100, a: 1 }, // White color with full opacity
+                from: 'HSLA',
+                to: 'CSS string'
+            },
+            {
+                readOnly: true,
+                title: 'complementaryHsl',
+                converter: complementaryHsl,
+                defaultValue: { h: 0, s: 100, l: 50 }, // Red color
+                from: 'HSL',
+                to: 'Complementary HSL'
+            }
+        ]
     }
+
 ];

@@ -5,6 +5,7 @@
 	import Menu from '$lib/components/Menu.svelte';
 	import BasicConverter from '$lib/components/BasicConverter.svelte';
 	import data from './data';
+	import { rgbToHex } from '@jonibach/convert';
 
 	let elements = [];
 	let screenSize = 400;
@@ -43,6 +44,8 @@
 		window.addEventListener('resize', checkScreenSize);
 		window.addEventListener('scroll', handleScroll);
 	});
+
+	$: console.log('hsl', rgbToHex({ r: 255, g: 255, b: 255 }));
 </script>
 
 <body style="margin: 0;">
@@ -57,6 +60,7 @@
 						<div>
 							<h3>{item.title}</h3>
 							<BasicConverter
+								readOnly={item.readOnly}
 								defaultValue={item.defaultValue}
 								converter={item.converter}
 								from={item.from}

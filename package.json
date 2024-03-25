@@ -31,6 +31,6 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"@jonibach/convert": "^1.0.10"
+		"@jonibach/convert": "^1.0.11"
 	}
 }
