@@ -52,7 +52,11 @@
 	<div class="page">
 		<Menu {data} />
 		<div class="page-content">
-			<h1 class="page-title">npm i @jonibach/convert</h1>
+			<h1 class="page-title">
+				<a href="https://www.npmjs.com/package/@jonibach/convert" target="_blank">
+					npm i @jonibach/convert
+				</a>
+			</h1>
 
 			{#each data as category}
 				<Collection title={category.title}>
