@@ -1,4 +1,8 @@
 import {
+    arrayToFlatArray,
+    arrayToGroup,
+    arrayToObject,
+    arrayToSet,
     atmospheresToPascals,
     binaryToDecimal,
     binaryToHexadecimal,
@@ -36,10 +40,13 @@ import {
     kilogramsToPounds,
     litersToCubicFeet,
     litersToGallons,
+    mapToObject,
     metersToFeet,
     metersToInches,
     metersToMiles,
     milesToMeters,
+    objectToArray,
+    objectToMap,
     octalToDecimal,
     ouncesToKilograms,
     pascalsToAtmospheres,
@@ -49,6 +56,7 @@ import {
     rgbToHex,
     rgbToHsl,
     rgbaToString,
+    setToArray,
     stringToBinary,
     stringToHex,
     timestampToDate,
@@ -569,6 +577,76 @@ export default [
         ]
     },
 
+    {
+        title: 'Data ',
+        items: [
+            {
+                readOnly: true,
+                title: 'objectToArray',
+                converter: objectToArray,
+                defaultValue: { key1: 'value1', key2: 'value2' },
+                from: 'object',
+                to: 'array of [key, value] pairs'
+            },
+            {
+                readOnly: true,
+                title: 'arrayToObject',
+                converter: arrayToObject,
+                defaultValue: [['key1', 'value1'], ['key2', 'value2']],
+                from: 'array of [key, value] pairs',
+                to: 'object'
+            },
+            {
+                readOnly: true,
+                title: 'mapToObject',
+                converter: mapToObject,
+                defaultValue: new Map([['key1', 'value1'], ['key2', 'value2']]),
+                from: 'Map',
+                to: 'object'
+            },
+            {
+                readOnly: true,
+                title: 'objectToMap',
+                converter: objectToMap,
+                defaultValue: { key1: 'value1', key2: 'value2' },
+                from: 'object',
+                to: 'Map'
+            },
+            {
+                readOnly: true,
+                title: 'setToArray',
+                converter: setToArray,
+                defaultValue: new Set(['value1', 'value2']),
+                from: 'Set',
+                to: 'array'
+            },
+            {
+                readOnly: true,
+                title: 'arrayToSet',
+                converter: arrayToSet,
+                defaultValue: ['value1', 'value2'],
+                from: 'array',
+                to: 'Set'
+            },
+            {
+                readOnly: true,
+                title: 'arrayToFlatArray',
+                converter: arrayToFlatArray,
+                defaultValue: [1, [2, [3, [4, 5]]]],
+                from: 'nested array',
+                to: 'flattened array'
+            },
+            {
+                readOnly: true,
+                title: 'arrayToGroup',
+                converter: arrayToGroup,
+                defaultValue: [{ category: 'fruit', name: 'apple' }, { category: 'fruit', name: 'banana' }, { category: 'vegetable', name: 'carrot' }],
+                additionalParams: 'key: string',
+                from: 'array of objects',
+                to: 'object grouped by key'
+            }
+        ]
+    },
 
 
 ];
