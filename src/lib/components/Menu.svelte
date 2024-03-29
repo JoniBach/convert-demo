@@ -3,7 +3,16 @@
 
 	export let data;
 
+	let search = ''
+
+	$: filteredData = data.filter(category => {
+		const items = category.items.filter(graph => {
+			return graph.title.toLowerCase().includes(search.toLowerCase());
+		});
+		return items.length > 0 ? { ...category, items } : null;
+	}).filter(Boolean);
 	let isSmallScreen = false;
+
 
 	function navigateToElement(elementId) {
 		const element = document.getElementById(elementId + '-title');
@@ -26,8 +35,9 @@
 
 <div class="sidebar {isSmallScreen ? 'hidden' : ''}">
 	<div class="sidebar-content">
-		{#each data as category}
-			<div class="category" on:click={() => navigateToElement(category.title)}>
+		<input type="text" placeholder="Search" class='search' bind:value={search} />
+		{#each filteredData as category}
+			<div class="category title" on:click={() => navigateToElement(category.title)}>
 				{category.title}
 			</div>
 			{#each category.items as graph}
@@ -80,5 +90,22 @@
 		.sidebar {
 			display: none;
 		}
+	}
+
+	.title {
+		position: sticky;
+		top: 0;
+		margin: 0;
+		z-index: 2;
+	}
+	.search {
+		padding: 10px;
+		width: 100%;
+		box-sizing: border-box;
+
+		border: 1px solid #aaa;
+		background-color: #aaa;
+		
+		
 	}
 </style>
