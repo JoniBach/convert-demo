@@ -5,7 +5,9 @@
 	import Menu from '$lib/components/Menu.svelte';
 	import BasicConverter from '$lib/components/BasicConverter.svelte';
 	import data from './data';
-	import { rgbToHex } from '@jonibach/convert';
+
+	import { isEqualTo } from '@jonibach/convert';
+	import ConditionConverter from '$lib/components/ConditionConverter.svelte';
 
 	let elements = [];
 	let screenSize = 400;
@@ -45,7 +47,7 @@
 		window.addEventListener('scroll', handleScroll);
 	});
 
-	$: console.log('hsl', rgbToHex({ r: 255, g: 255, b: 255 }));
+	$: console.log('hsl', isEqualTo(5, '5'));
 </script>
 
 <body style="margin: 0;">
@@ -63,14 +65,28 @@
 					{#each category.items as item}
 						<div>
 							<h3 id="{item.title}-title">{item.title}</h3>
-							<BasicConverter
+							{#if item.type === 'check'}
+							<ConditionConverter
+								type={item.type}
 								readOnly={item.readOnly}
-								defaultValue={item.defaultValue}
+								title={item.title}
 								converter={item.converter}
 								from={item.from}
 								to={item.to}
-								title={item.title}
+								value1={item.value1}
+								value2={item.value2}
 							/>
+
+							{:else}
+							<BasicConverter 
+							readOnly={item.readOnly}
+							defaultValue={item?.defaultValue}
+							converter={item.converter}
+							from={item.from}
+							to={item.to}
+							title={item.title}
+							/>
+								{/if}
 						</div>
 					{/each}
 				</Collection>
