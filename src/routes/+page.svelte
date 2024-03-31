@@ -8,6 +8,8 @@
 
 	import { isEqualTo } from '@jonibach/convert';
 	import ConditionConverter from '$lib/components/ConditionConverter.svelte';
+	import FilterConverter from '$lib/components/FilterConverter.svelte';
+	import DynamicCheckConverter from '$lib/components/DynamicCheckConverter.svelte';
 
 	let elements = [];
 	let screenSize = 400;
@@ -66,27 +68,38 @@
 						<div>
 							<h3 id="{item.title}-title">{item.title}</h3>
 							{#if item.type === 'check'}
-							<ConditionConverter
-								type={item.type}
-								readOnly={item.readOnly}
-								title={item.title}
-								converter={item.converter}
-								from={item.from}
-								to={item.to}
-								value1={item.value1}
-								value2={item.value2}
-							/>
-
+								<ConditionConverter
+									type={item.type}
+									readOnly={item.readOnly}
+									title={item.title}
+									converter={item.converter}
+									from={item.from}
+									to={item.to}
+									value1={item.value1}
+									value2={item.value2}
+								/>
+							{:else if item.type === 'filter'}
+								<FilterConverter
+									readOnly={item?.readOnly}
+									defaultValue={item?.defaultValue}
+									converter={item?.converter}
+									from={item?.from}
+									to={item?.to}
+									title={item?.title}
+									data={item?.data}
+								/>
+							{:else if item.type === 'dynamicCheck'}
+								<DynamicCheckConverter />
 							{:else}
-							<BasicConverter 
-							readOnly={item.readOnly}
-							defaultValue={item?.defaultValue}
-							converter={item.converter}
-							from={item.from}
-							to={item.to}
-							title={item.title}
-							/>
-								{/if}
+								<BasicConverter
+									readOnly={item.readOnly}
+									defaultValue={item?.defaultValue}
+									converter={item.converter}
+									from={item.from}
+									to={item.to}
+									title={item.title}
+								/>
+							{/if}
 						</div>
 					{/each}
 				</Collection>
@@ -108,5 +121,10 @@
 
 	.page-content {
 		flex: 1;
+	}
+	.implamentation {
+		padding: 10px;
+		border: 1px solid #ccc;
+		margin-top: 10px;
 	}
 </style>

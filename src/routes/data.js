@@ -123,6 +123,23 @@ import {
     xor,
     nand,
     nor,
+    objectValuesToString,
+    objectKeysToString,
+    objectToString,
+    objectToQueryString,
+    objectArrayValuesToString,
+    objectArrayKeysToString,
+    objectArrayToString,
+    objectArrayToQueryString,
+    objectArrayToArrayOfString,
+    nestedObjectArrayValuesToString,
+    nestedObjectArrayKeysToString,
+    nestedObjectArrayToString,
+    nestedObjectArrayToQueryString,
+    arrayWithObjectAndString,
+    searchString,
+    filterArrayByString,
+    filterArrayByStringRaw,
     // allMatch,
     // anyMatch,
     // noneMatch
@@ -795,7 +812,183 @@ export default [
                 defaultValue: new Uint8Array(), // Placeholder for demonstration
                 from: 'Uint8Array',
                 to: 'string'
+            },
+            // object to string conversions
+
+            {
+                readOnly: true,
+                title: 'Object Values to String',
+                converter: objectValuesToString,
+                defaultValue: { name: "John", age: 30, occupation: "Developer" },
+                from: 'object',
+                to: 'string'
+            },
+            {
+                readOnly: true,
+                title: 'Object Keys to String',
+                converter: objectKeysToString,
+                defaultValue: { name: "John", age: 30, occupation: "Developer" },
+                from: 'object',
+                to: 'string'
+            },
+            {
+                readOnly: true,
+                title: 'Object to String',
+                converter: objectToString,
+                defaultValue: { name: "John", age: 30 },
+                from: 'object',
+                to: 'string'
+            },
+            {
+                readOnly: true,
+                title: 'Object to Queryy String',
+                converter: objectToQueryString,
+                defaultValue: { name: "John Doe", age: "30" },
+                from: 'object',
+                to: 'queryString'
+            },
+            {
+                readOnly: true,
+                title: 'Object Array Values to String',
+                converter: objectArrayValuesToString,
+                defaultValue: [{ name: "John" }, { age: "30" }],
+                from: 'array<object>',
+                to: 'string'
+            },
+            {
+                readOnly: true,
+                title: 'Object Array Keys to String',
+                converter: objectArrayKeysToString,
+                defaultValue: [{ name: "John" }, { age: "30" }],
+                from: 'array<object>',
+                to: 'string'
+            },
+            {
+                readOnly: true,
+                title: 'Object Array to String',
+                converter: objectArrayToString,
+                defaultValue: [{ name: "John", age: "30" }],
+                from: 'array<object>',
+                to: 'string'
+            },
+            {
+                readOnly: true,
+                title: 'Object Array to Query String',
+                converter: objectArrayToQueryString,
+                defaultValue: [{ name: "John" }, { age: 30 }],
+                from: 'array<object>',
+                to: 'queryString'
+            },
+
+            // array filtering
+
+
+            {
+                type: 'filter',
+                readOnly: false,
+                title: 'Object Array to Array of Strings',
+                converter: objectArrayToArrayOfString,
+                from: 'arrayOfObjects',
+                to: 'arrayOfStrings',
+                defaultValue: 'John',
+                data: [{ name: "John", age: 30 }, { name: "Jane", occupation: "Developer" }]
+            },
+            {
+                type: 'filter',
+                readOnly: false,
+                title: 'Nested Object Array Values to String',
+                description: 'Flattens a nested array of objects and concatenates all values into a single string.',
+                converter: nestedObjectArrayValuesToString,
+                from: 'nestedArrayOfObjects',
+                to: 'string',
+                defaultValue: 'Developer', // Example search term for demonstration
+                data: [[{ name: "John", age: 30 }, [{ name: "Jane", occupation: "Developer" }]]]
+            },
+            {
+                type: 'filter',
+                readOnly: false,
+                title: 'Nested Object Array Keys to String',
+                description: 'Flattens a nested array of objects and concatenates all keys into a single string.',
+                converter: nestedObjectArrayKeysToString,
+                from: 'nestedArrayOfObjects',
+                to: 'string',
+                defaultValue: 'occupation', // Example key to search for in demonstration
+                data: [[{ name: "John", age: 30 }, [{ name: "Jane", occupation: "Developer" }]]]
+            },
+            {
+                type: 'filter',
+                readOnly: false,
+                title: 'Nested Object Array to String',
+                description: 'Flattens a nested array of objects and converts each object to a string representation.',
+                converter: nestedObjectArrayToString,
+                from: 'nestedArrayOfObjects',
+                to: 'string',
+                defaultValue: 'John', // Example name to search for in demonstration
+                data: [[{ name: "John", age: 30 }, [{ name: "Jane", occupation: "Developer" }]]]
+            },
+            {
+                type: 'filter',
+                readOnly: false,
+                title: 'Nested Object Array to Query String',
+                description: 'Flattens a nested array of objects and converts each object to a query string representation.',
+                converter: nestedObjectArrayToQueryString,
+                from: 'nestedArrayOfObjects',
+                to: 'string',
+                defaultValue: 'age=30', // Example query string piece to search for in demonstration
+                data: [[{ name: "John", age: 30 }, [{ name: "Jane", occupation: "Developer" }]]]
+            },
+            {
+                type: 'filter',
+                readOnly: false,
+                title: 'Array With Object And String',
+                description: 'Converts an array of objects into an array with each object accompanied by its string representation.',
+                converter: arrayWithObjectAndString,
+                from: 'arrayOfObjects',
+                to: 'arrayOfOriginalAndString',
+                defaultValue: 'Developer', // Example search term for demonstration
+                data: [{ name: "John", age: 30 }, { name: "Jane", occupation: "Developer" }]
+            },
+            {
+                type: 'filter',
+                readOnly: false,
+                title: 'Search String',
+                description: 'Searches a string for a partial match regardless of case.',
+                converter: searchString,
+                from: 'string',
+                to: 'boolean',
+                defaultValue: "fox", // The term users might search for in the string
+                data: "The quick brown fox jumps over the lazy dog."
+            },
+            {
+                type: 'filter',
+                readOnly: false,
+                title: 'Filter Array by String (Retain Original Format)',
+                description: 'Filters an array of transformed objects, returning only those that match the search term, in their original format.',
+                converter: filterArrayByString,
+                from: 'arrayOfTransformedObjects',
+                to: 'arrayOfObjects',
+                defaultValue: "Developer", // Search term used for filtering the array
+                data: [
+                    { original: { name: "Dave", age: 42 }, objectString: "Dave, 42" },
+                    { original: { name: "Jane", occupation: "Developer", experience: "5 years" }, objectString: "Jane, Developer, 5 years" }
+                ]
+            },
+            {
+                type: 'filter',
+                readOnly: false,
+                title: 'Filter Array by String (Retain Transformed Format)',
+                description: 'Filters an array of transformed objects based on a search term, retaining the transformed format.',
+                converter: filterArrayByStringRaw,
+                from: 'arrayOfTransformedObjects',
+                to: 'arrayOfTransformedObjects',
+                defaultValue: "Developer", // Search term used for filtering the array
+                data: [
+                    { original: { name: "Dave", age: 42 }, objectString: "Dave, 42" },
+                    { original: { name: "Jane", occupation: "Developer", experience: "5 years" }, objectString: "Jane, Developer, 5 years" }
+                ]
             }
+
+
         ]
     },
     {
@@ -1250,6 +1443,17 @@ export default [
             },
 
 
+
+        ],
+
+    },
+    {
+        title: 'Dynamic Checks',
+        items: [
+            {
+                type: 'dynamicCheck',
+                title: '',
+            },
 
         ]
     }
